@@ -9,8 +9,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var olympics = _angular2.default.module('olympics', []);
 
-olympics.controller('sportsController', function () {
-  this.sports = ['weightlifting', 'cycling'];
+olympics.controller('sportsController', function ($http) {
+  this.sports;
+  var context = this;
+  $http.get('/sports').then(function (response) {
+    console.log('requesting');
+    context.sports = response.data;
+  });
 });
 
 },{"angular":3}],2:[function(require,module,exports){
